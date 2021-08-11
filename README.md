@@ -14,4 +14,4 @@ pip install tweepy
 pip install googletrans
 ```
 
-check requirements.txt file
+check <a href="https://github.com/Ibukiyoshidaa/TwitterFindNewFriend/blob/main/requirements.txt">requirements.txt</a> file
