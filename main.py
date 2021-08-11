@@ -67,19 +67,5 @@ def main():
     print(end-start)
 
 
-# google trans
-#translator = Translator(service_urls=['translate.googleapis.com'])
-#translation = translator.translate('いい天気ですね！',src='ja', dest='en')
-#print(translation.text)
-
-
-# textblob
-#data = TextBlob(translation.text)
-#polarity = data.sentiment.polarity
-
-#print("polarity: " + str(polarity))
-
-
-
 if __name__=='__main__':
     main()
