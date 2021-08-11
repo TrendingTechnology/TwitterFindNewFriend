@@ -13,3 +13,5 @@ pip install tweepy
 ```
 pip install googletrans
 ```
+
+check requirements.txt file
