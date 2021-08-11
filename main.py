@@ -24,7 +24,7 @@ def twitter_api():
 user_id = []
 def printTweetBySearch(s):
     api = twitter_api()
-    tweets = tweepy.Cursor(api.search, q = s, include_entities = True, tweet_mode = 'extended', lang = 'ja').items(10)
+    tweets = tweepy.Cursor(api.search, q = s, include_entities = True, tweet_mode = 'extended', lang = 'ja').items(5)
 
     for tweet in tweets:
         if tweet.user.screen_name not in user_id:
@@ -33,16 +33,29 @@ def printTweetBySearch(s):
             user_id.append(tweet.user.screen_name)
 
 
-
+userPolarity = {}
 def searchTweetsForUser():
     api = twitter_api()
 
     for user in user_id:
         results = api.user_timeline(screen_name=user, count=5)
+        count = 0
         for result in results:
             print('＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝')
             print(result.text)
-            print(result.user.screen_name)
+
+            translator = Translator(service_urls=['translate.googleapis.com'])
+            translation = translator.translate(result.text,src='ja', dest='en')
+            print(translation.text)
+
+            data = TextBlob(translation.text)
+            polarity = data.sentiment.polarity
+            count += polarity
+
+        userPolarity[user] = count
+
+    print(userPolarity)
+
 
 def main():
     start = time.time()
