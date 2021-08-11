@@ -54,7 +54,9 @@ def searchTweetsForUser():
 
         userPolarity[user] = count
 
-    print(userPolarity)
+    sortedUserPolarity = sorted(userPolarity.items(), key=lambda x: x[1])
+
+    print(sortedUserPolarity)
 
 
 def main():
